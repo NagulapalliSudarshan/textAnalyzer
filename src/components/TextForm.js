@@ -29,6 +29,18 @@ function TextForm(props) {
         props.alertHandler("extra spaces have been removed","Success")
     }
 
+    function numberofWords(s){
+        let arr = s.split(" ")
+        let num=0
+        arr.forEach(string=>{
+            if(string.length>0 && string!==" "){
+                num++;
+            }
+        })
+
+        return num
+    }
+
   return (
     <>
       <div className="m-3">
@@ -49,7 +61,7 @@ function TextForm(props) {
 
         <hr/>
         <h4>Analysis</h4>
-        <span>Number of words = {text.split(" ").length}</span><br/>
+        <span>Number of words = {numberofWords(text)}</span><br/>
         <span>Number of characters = {text.length}</span><br/>
         <span>Time to read the text(sec) = {text.split(" ").length*0.008}</span>
 
