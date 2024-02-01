@@ -11,26 +11,27 @@ function TextForm(props) {
     const handleUpperCase=()=>{
         const newText = text.toUpperCase()
         nextText(newText)
+        props.alertHandler("text changed to upperCase","Success")
     }
     const handleLowerCase=()=>{
         const newText = text.toLowerCase()
         nextText(newText)
+        props.alertHandler("text changed to LowerCase","Success")
     }
     const handleClear=()=>{
-
         const newText = ""
         nextText(newText)
+        props.alertHandler("text has been cleared","Success")
     }
-
-    const handleRepeat=(event)=>{
-        const number = event.target.value
-        const newText = text.repeat(number)
+    const handleSpaces=()=>{ 
+        const newText = text.replace(/\s{2,}/g, ' ').trim() 
         nextText(newText)
+        props.alertHandler("extra spaces have been removed","Success")
     }
 
   return (
     <>
-      <div className="mb-3">
+      <div className="m-3">
         <h3>{props.heading}</h3>
         <textarea
           className="form-control"
@@ -42,9 +43,9 @@ function TextForm(props) {
 
         <button type="button" className="btn btn-primary m-2" onClick={handleUpperCase}>Upper Case</button>
         <button type="button" className="btn btn-primary m-2" onClick={handleLowerCase}>Lower Case</button>
+        <button type="button" className="btn btn-primary m-2" onClick={handleSpaces}>Remove Extra spaces </button>
         <button type="button" className="btn btn-danger m-2" onClick={handleClear}>Clear </button>
-        <br/><span className="mx-2">Repeat:</span>
-        <input type='number' onChange={handleRepeat}/>
+        
 
         <hr/>
         <h4>Analysis</h4>
@@ -54,7 +55,7 @@ function TextForm(props) {
 
         <hr/>
         <h4>Preview</h4>
-        <p>{text}</p>
+        <p>{text?text:"Enter some text in textBox above to see preview"}</p>
         
       </div>
     </>

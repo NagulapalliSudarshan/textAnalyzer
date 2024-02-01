@@ -1,6 +1,6 @@
 function Navbar(props) {
   return (
-    <nav className={`navbar navbar-${props.mode} bg-${props.mode} mb-3`}>
+    <nav className={`navbar navbar-${props.mode} bg-${props.mode} `}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           Text Analyser
